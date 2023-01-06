@@ -9,3 +9,6 @@
 
 ## Stop local resolver
 edit /etc/system
+
+## Docker references
+[Cheat sheet](https://github.com/subhrendu1987/DockerCommandReferences/blob/main/README.md)
