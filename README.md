@@ -24,6 +24,7 @@ edit /etc/system
 #make
 #cd ../
 #make
+mkdir -p data
 sudo docker-compose pull
 sudo docker-compose up -d
 '''
