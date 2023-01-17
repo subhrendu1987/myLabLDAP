@@ -12,3 +12,12 @@ edit /etc/system
 
 ## Docker references
 [Cheat sheet](https://github.com/subhrendu1987/DockerCommandReferences/blob/main/README.md)
+
+# Configuration
+## Change docker-compose.yaml with proper credentials
+
+## Build and Execute
+'''
+sudo docker-compose pull
+
+'''
