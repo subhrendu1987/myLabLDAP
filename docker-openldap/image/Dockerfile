@@ -24,8 +24,9 @@ RUN echo "deb http://ftp.debian.org/debian buster-backports main" >> /etc/apt/so
 RUN echo "path-include /usr/share/doc/krb5*" >> /etc/dpkg/dpkg.cfg.d/docker && apt-get -y update \
     && /container/tool/add-service-available :ssl-tools \
     && LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get -t buster-backports install -y --no-install-recommends \
-    ca-certificates \
-    curl \
+    ca-certificates
+RUN apt-get -y install curl
+RUN curl \
     ldap-utils=${OPENLDAP_PACKAGE_VERSION}\* \
     libsasl2-modules \
     libsasl2-modules-db \
@@ -36,15 +37,15 @@ RUN echo "path-include /usr/share/doc/krb5*" >> /etc/dpkg/dpkg.cfg.d/docker && a
     openssl \
     slapd=${OPENLDAP_PACKAGE_VERSION}\* \
     slapd-contrib=${OPENLDAP_PACKAGE_VERSION}\* \
-    krb5-kdc-ldap \
-    && curl -o pqchecker.deb -SL http://www.meddeb.net/pub/pqchecker/deb/8/pqchecker_${PQCHECKER_VERSION}_amd64.deb \
-    && echo "${PQCHECKER_MD5} *pqchecker.deb" | md5sum -c - \
-    && dpkg -i pqchecker.deb \
-    && rm pqchecker.deb \
-    && update-ca-certificates \
-    && apt-get remove -y --purge --auto-remove curl ca-certificates \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    krb5-kdc-ldap
+RUN curl -o pqchecker.deb -SL http://www.meddeb.net/pub/pqchecker/deb/8/pqchecker_${PQCHECKER_VERSION}_amd64.deb
+RUN echo "${PQCHECKER_MD5} *pqchecker.deb" | md5sum -c -
+RUN dpkg -i pqchecker.deb
+RUN rm pqchecker.deb
+RUN update-ca-certificates
+RUN apt-get remove -y --purge --auto-remove curl ca-certificates
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add service directory to /container/service
 ADD service /container/service
