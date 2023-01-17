@@ -27,4 +27,4 @@ edit /etc/system
 sudo docker-compose pull
 sudo docker-compose up -d
 '''
-Use web browser to navigate to [http://127.0.0.1:8081/](http://127.0.0.1:8081/). Default admin username and password can be found in `docker-compose.yaml` (i.e. `LDAP_ADMIN_USERNAME=admin`,`LDAP_ADMIN_PASSWORD=admin_pass`) Use admin in the following format `cn=admin,dc=ucllocal,dc=com`
+Use web browser to navigate to [http://127.0.0.1:8081/](http://127.0.0.1:8081/). Default admin username and password can be found in `docker-compose.yaml` (i.e. `LDAP_ADMIN_USERNAME=admin`,`LDAP_BASE_DN=dc=ucllocal,dc=com`,`LDAP_ADMIN_PASSWORD=admin_pass`) Use admin in the following format `cn=admin,dc=ucllocal,dc=com`
