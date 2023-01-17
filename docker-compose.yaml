@@ -26,6 +26,7 @@ services:
       - LDAP_READONLY_USER_PASSWORD=ro_pass
     networks:
       - openldap
+    restart: unless-stopped
   
   phpldapadmin:
     image: osixia/phpldapadmin:latest
@@ -40,6 +41,7 @@ services:
       - openldap
     networks:
       - openldap
+    restart: unless-stopped
 
 networks:
   openldap:
